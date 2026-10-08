@@ -1,0 +1,18 @@
+# Configuration présentée slide 09 : « La configuration de notre projet »
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"            # vérifier chaque semaine
+    open-pull-requests-limit: 5     # cinq pull requests au maximum
+    groups:
+      petites-montees:              # regrouper les petites montées
+        update-types: ["minor", "patch"]
+    # les versions majeures restent hors groupe : une PR par paquet, relue une par une
+
+  # Dependabot surveille aussi les actions utilisées par la CI
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
